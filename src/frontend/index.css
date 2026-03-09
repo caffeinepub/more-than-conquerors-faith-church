@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Church Palette — Deep Charcoal + Regal Gold */
+    --background: 0.12 0 0;
+    --foreground: 0.96 0.01 80;
+
+    --card: 0.16 0 0;
+    --card-foreground: 0.96 0.01 80;
+
+    --popover: 0.18 0 0;
+    --popover-foreground: 0.96 0.01 80;
+
+    /* Gold primary */
+    --primary: 0.72 0.12 75;
+    --primary-foreground: 0.10 0 0;
+
+    --secondary: 0.22 0 0;
+    --secondary-foreground: 0.96 0.01 80;
+
+    --muted: 0.20 0 0;
+    --muted-foreground: 0.60 0.02 60;
+
+    /* Gold accent */
+    --accent: 0.72 0.12 75;
+    --accent-foreground: 0.10 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.25 0.01 60;
+    --input: 0.22 0.01 60;
+    --ring: 0.72 0.12 75;
+
+    --chart-1: 0.72 0.12 75;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.14 0 0;
+    --sidebar-foreground: 0.96 0.01 80;
+    --sidebar-primary: 0.72 0.12 75;
+    --sidebar-primary-foreground: 0.10 0 0;
+    --sidebar-accent: 0.20 0 0;
+    --sidebar-accent-foreground: 0.96 0.01 80;
+    --sidebar-border: 0.25 0.01 60;
+    --sidebar-ring: 0.72 0.12 75;
+
+    /* Custom church tokens */
+    --gold: 0.72 0.12 75;
+    --gold-light: 0.82 0.10 80;
+    --gold-dark: 0.55 0.14 65;
+    --charcoal: 0.12 0 0;
+    --charcoal-mid: 0.16 0 0;
+    --charcoal-light: 0.22 0 0;
+    --parchment: 0.95 0.03 85;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+
+  .bg-charcoal {
+    background-color: oklch(var(--charcoal));
+  }
+
+  .bg-charcoal-mid {
+    background-color: oklch(var(--charcoal-mid));
+  }
+
+  .bg-charcoal-light {
+    background-color: oklch(var(--charcoal-light));
+  }
+
+  .border-gold {
+    border-color: oklch(var(--gold));
+  }
+
+  .gold-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, oklch(var(--gold)), transparent);
+  }
+
+  .section-heading-accent {
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-heading-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: oklch(var(--gold));
+  }
+
+  .section-heading-accent-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .glass-dark {
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(180, 150, 80, 0.15);
+  }
+
+  .btn-gold {
+    background-color: oklch(var(--gold));
+    color: oklch(var(--charcoal));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+  }
+
+  .btn-gold:hover {
+    background-color: oklch(var(--gold-light));
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(201, 168, 76, 0.35);
+  }
+
+  .btn-outline-white {
+    border: 2px solid white;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    background: transparent;
+  }
+
+  .btn-outline-white:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-gold {
+    border: 2px solid oklch(var(--gold));
+    color: oklch(var(--gold));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    background: transparent;
+  }
+
+  .btn-outline-gold:hover {
+    background: oklch(var(--gold) / 0.1);
+    transform: translateY(-1px);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, oklch(var(--gold-light)), oklch(var(--gold)), oklch(var(--gold-dark)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .noise-bg {
+    position: relative;
+  }
+
+  .noise-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .event-card-gold-top {
+    border-top: 3px solid oklch(var(--gold));
+  }
+
+  .shimmer-gold {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--charcoal-light)) 0%,
+      oklch(var(--gold) / 0.08) 50%,
+      oklch(var(--charcoal-light)) 100%
+    );
+  }
+
+  /* ── FIX 1: Cinematic hero text shadow & glow ─────────────────────────── */
+  .hero-title {
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      0 8px 32px rgba(0, 0, 0, 0.7),
+      0 0 80px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle-gold {
+    text-shadow:
+      0 0 40px oklch(0.72 0.12 75 / 0.6),
+      0 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.15em;
+  }
+
+  .hero-eyebrow {
+    text-shadow: 0 0 20px oklch(0.72 0.12 75 / 0.8);
+    letter-spacing: 0.4em;
+  }
+
+  .hero-tagline {
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.9);
+  }
+
+  /* ── FIX 2: Section dividers — angled clip transitions ───────────────── */
+  .section-clip-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
+    padding-bottom: calc(3rem + 5rem);
+  }
+
+  .section-clip-top {
+    clip-path: polygon(0 3rem, 100% 0, 100% 100%, 0 100%);
+    padding-top: calc(3rem + 5rem);
+    margin-top: -3rem;
+  }
+
+  .section-clip-both {
+    clip-path: polygon(0 3rem, 100% 0, 100% calc(100% - 3rem), 0 100%);
+    padding-top: calc(3rem + 5rem);
+    padding-bottom: calc(3rem + 5rem);
+    margin-top: -3rem;
+  }
+
+  /* ── FIX 3: Gold eyebrow badge — consistent across all sections ──────── */
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: oklch(var(--gold));
+    margin-bottom: 1rem;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: oklch(var(--gold) / 0.55);
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  /* Featured sermon gold title accent */
+  .featured-sermon-title {
+    text-shadow: 0 0 30px oklch(0.72 0.12 75 / 0.15);
+  }
+
+  /* Section heading underline — bold left-anchor variant */
+  .heading-underline {
+    position: relative;
+    padding-bottom: 1rem;
+  }
+  .heading-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, oklch(var(--gold)), oklch(var(--gold-dark)));
+    border-radius: 2px;
+  }
+  .heading-underline-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Gold shimmer text animation for the hero subtitle */
+  @keyframes gold-shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .gold-shimmer-text {
+    background: linear-gradient(
+      90deg,
+      oklch(var(--gold-dark)) 0%,
+      oklch(var(--gold-light)) 30%,
+      oklch(var(--gold)) 50%,
+      oklch(var(--gold-light)) 70%,
+      oklch(var(--gold-dark)) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gold-shimmer 4s linear infinite;
+  }
+}
